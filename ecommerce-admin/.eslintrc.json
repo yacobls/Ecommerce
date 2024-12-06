@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended",
+    "standard"
+  ],
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ], // Contoh aturan untuk semi-colon
+    "quotes": [
+      "error",
+      "single"
+    ] // Contoh aturan untuk single quotes
+  }
 }
