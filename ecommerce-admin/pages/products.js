@@ -26,7 +26,7 @@ export default function Products() {
           </tr>
         </thead>
         <tbody>
-          {products.map(product => (
+          {products.map((product) => (
             <tr key={product._id}>
               <td>{product.title}</td>
               <td>
