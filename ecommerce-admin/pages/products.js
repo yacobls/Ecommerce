@@ -13,7 +13,7 @@ export default function Products() {
   return (
     <Layout>
       <Link
-        className="bg-emerald-700 text-white rounded-md py-1 px-2"
+        className="btn-default"
         href={"/products/new"}
       >
         Add new products
@@ -30,7 +30,7 @@ export default function Products() {
             <tr key={product._id}>
               <td>{product.title}</td>
               <td>
-                <Link href={"/products/edit/" + product._id}>
+                <Link className="btn-edit" href={"/products/edit/" + product._id}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -47,7 +47,7 @@ export default function Products() {
                   </svg>
                   Edit
                 </Link>
-                <Link href={"/products/delete/" + product._id}>
+                <Link className="btn-remove" href={"/products/delete/" + product._id}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
