@@ -75,6 +75,13 @@ export default function CartPage() {
   function lessOfThisProduct(id) {
     removeProduct(id);
   }
+  function formatRupiah(value) {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(value);
+  }
+
   async function goToPayment() {
     const response = await axios.post("/api/checkout", {
       name,
@@ -154,15 +161,21 @@ export default function CartPage() {
                         </Button>
                       </td>
                       <td>
-                        {cartProducts.filter((id) => id === product._id)
-                          .length * product.price}
+                        {formatRupiah(
+                          cartProducts.filter((id) => id === product._id)
+                            .length * product.price
+                        )}
                       </td>
                     </tr>
                   ))}
                   <tr>
                     <td></td>
-                    <td></td>
-                    <td>{total}</td>
+                    <td>
+                      <strong>Total:</strong>
+                    </td>
+                    <td>
+                      <strong>{formatRupiah(total)}</strong>
+                    </td>
                   </tr>
                 </tbody>
               </Table>
