@@ -8,8 +8,15 @@ export default async function handler(req, res) {
     res.json("should be a POST request");
     return;
   }
-  const { name, email, city, postalCode, streetAddress, country, cartProducts, } =
-    req.body;
+  const {
+    name,
+    email,
+    city,
+    postalCode,
+    streetAddress,
+    country,
+    cartProducts,
+  } = req.body;
   await mongooseConnect();
   const productsIds = cartProducts;
   const uniqueIds = [...new Set(productsIds)];
@@ -49,7 +56,7 @@ export default async function handler(req, res) {
     customer_email: email,
     success_url: process.env.PUBLIC_URL + "/cart?success=1",
     cancel_url: process.env.PUBLIC_URL + "/cart?canceled=1",
-    metadata: { orderId: orderDoc._id.toString() },
+    metadata: { orderId: orderDoc._id.toString(), test: "Ok" },
   });
 
   res.json({
