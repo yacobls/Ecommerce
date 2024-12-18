@@ -13,9 +13,12 @@ import styled from "styled-components";
 
 const ColWrapper = styled.div`
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1fr;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
   gap: 40px;
-  margin-top: 40px;
+  margin: 40px 0;
 `;
 const PriceRow = styled.div`
   display: flex;
@@ -25,6 +28,14 @@ const PriceRow = styled.div`
 const Price = styled.span`
   font-size: 1.4rem;
 `;
+
+function formatRupiah(number) {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  }).format(number);
+}
 
 export default function ProductPage({ product }) {
   const { addProduct } = useContext(CartContext);
@@ -41,7 +52,7 @@ export default function ProductPage({ product }) {
             <p>{product.description}</p>
             <PriceRow>
               <div>
-                <Price>${product.price}</Price>
+                <Price>{formatRupiah(product.price)}</Price>
               </div>
               <div>
                 <Button primary onClick={() => addProduct(product._id)}>

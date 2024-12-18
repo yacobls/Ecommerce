@@ -35,15 +35,25 @@ const ProductInfoBox = styled.div`
 `;
 
 const PriceRow = styled.div`
-  display: flex;
+  display: block;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    gap: 1px;
+  }
   align-items: center;
   justify-content: space-between;
   margin-top: 2px;
 `;
 
 const Price = styled.div`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
+  text-align: right;
+  @media screen and (min-width: 768px) {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: left;
+  }
 `;
 
 // Fungsi format harga ke format Rupiah
@@ -69,7 +79,7 @@ export default function ProductBox({ _id, title, description, price, images }) {
         <Title href={url}>{title}</Title>
         <PriceRow>
           <Price>{formatRupiah(price)}</Price>
-          <Button onClick={() => addProduct(_id)} primary outline>
+          <Button block onClick={() => addProduct(_id)} primary outline>
             Add to cart
           </Button>
         </PriceRow>
